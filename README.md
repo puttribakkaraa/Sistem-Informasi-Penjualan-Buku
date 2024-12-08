@@ -21,7 +21,7 @@ Proyek ini adalah aplikasi toko buku IT online yang dibangun menggunakan **Larav
 - **Node Js:** Runtime environment yang memungkinkan untuk menjalankan JavaScript di luar browser.
 
 <img src="./Image%20Pustaka%20Bit/3%20regist.png"  width="560" height="420" />
-<img src="./Image%20Pustaka%20Bit/4%20login.png"  width="560" height="420" />
+<img src="./Image%20Pustaka%20Bit/login2.png"  width="560" height="420" />
 <img src="./Image%20Pustaka%20Bit/5%20dashboard.png"  width="560" height="420" />
 <img src="./Image%20Pustaka%20Bit/6%20buku.png"  width="560" height="420" />
 <img src="./Image%20Pustaka%20Bit/7%20cari%20harga.png"  width="560" height="420" />
