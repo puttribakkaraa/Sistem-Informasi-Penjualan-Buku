@@ -42,7 +42,6 @@ Proyek ini adalah aplikasi toko buku IT online yang dibangun menggunakan **Larav
 <img src="./Image%20Pustaka%20Bit/20%20menambahkan%20pengarang.png"  width="560" height="415" />
 <img src="./Image%20Pustaka%20Bit/21%20menambahkan%20buku.png"  width="560" height="415" />
 <img src="./Image%20Pustaka%20Bit/23%20pesanan%20dan%20status.png"  width="560" height="415" />
-<img src="./Image%20Pustaka%20Bit/25%20responsif.png"  width="560" height="415" />
 
 
 ## Responsive design
