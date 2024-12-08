@@ -26,7 +26,7 @@ Proyek ini adalah aplikasi toko buku online yang dibangun menggunakan **Laravel 
 <img src="./Image%20Pustaka%20Bit/6%20buku.png"  width="560" height="420" />
 <img src="./Image%20Pustaka%20Bit/7%20cari%20harga.png"  width="560" height="420" />
 <img src="./Image%20Pustaka%20Bit/8%20cari%20kategori.png"  width="560" height="420" />
-<img src="./Image%20Pustaka%20Bit/riwayatPembelian.png"  width="560" height="435" />
+<img src="./Image%20Pustaka%20Bit/riwayatPembelian.png"  width="560" height="425" />
 
 
 
