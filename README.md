@@ -19,7 +19,7 @@ Proyek ini adalah aplikasi toko buku online yang dibangun menggunakan **Laravel 
 - **Composer:** Dependency manager untuk PHP yang digunakan untuk mengelola paket-paket Laravel.
 - **Node Js:** Runtime environment yang memungkinkan untuk menjalankan JavaScript di luar browser.
 
-![Register](https://github.com/Palinrungi/Pustaka-Bit_Online_Book_Store/blob/main/Image%20Pustaka%20Bit/3%20regist.png)
+<img src="./Image%20Pustaka%20Bit/3%20regist.png" alt="regist" width="300" height="400" />
 
 
 ![Deskripsi Gambar](./Image%20Pustaka%20Bit/4%20selamat%20datang.png)
