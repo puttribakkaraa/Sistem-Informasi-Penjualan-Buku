@@ -1,6 +1,6 @@
 # Pustaka Bit ( Toko Buku Online )
 
-Proyek ini adalah aplikasi toko buku online yang dibangun menggunakan **Laravel 11** dan **Tailwind CSS**. Aplikasi ini memungkinkan pengguna untuk menjelajahi berbagai kategori buku, melakukan checkout, dan melakukan pembelian secara online.
+Proyek ini adalah aplikasi toko buku IT online yang dibangun menggunakan **Laravel 11** dan **Tailwind CSS**. Aplikasi ini memungkinkan pengguna untuk menjelajahi berbagai kategori buku, melakukan checkout, dan melakukan pembelian secara online.
 
 ## Fitur
 
