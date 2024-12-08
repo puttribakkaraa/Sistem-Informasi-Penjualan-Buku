@@ -21,6 +21,7 @@ Proyek ini adalah aplikasi toko buku IT online yang dibangun menggunakan **Larav
 - **Composer:** Dependency manager untuk PHP yang digunakan untuk mengelola paket-paket Laravel.
 - **Node Js:** Runtime environment yang memungkinkan untuk menjalankan JavaScript di luar browser.
 
+
 ## Halaman Untuk Pelanggan
 <img src="./Image%20Pustaka%20Bit/1%20before.png"  width="560" height="420" />
 <img src="./Image%20Pustaka%20Bit/3%20regist.png"  width="560" height="420" />
@@ -30,6 +31,7 @@ Proyek ini adalah aplikasi toko buku IT online yang dibangun menggunakan **Larav
 <img src="./Image%20Pustaka%20Bit/7%20cari%20harga.png"  width="560" height="420" />
 <img src="./Image%20Pustaka%20Bit/8%20cari%20kategori.png"  width="560" height="420" />
 <img src="./Image%20Pustaka%20Bit/riwayatPembelian.png"  width="560" height="415" />
+
 
 ## Halaman Untuk Admin
 <img src="./Image%20Pustaka%20Bit/13%20admin%20login.png"  width="560" height="415" />
@@ -41,6 +43,10 @@ Proyek ini adalah aplikasi toko buku IT online yang dibangun menggunakan **Larav
 <img src="./Image%20Pustaka%20Bit/21%20menambahkan%20buku.png"  width="560" height="415" />
 <img src="./Image%20Pustaka%20Bit/23%20pesanan%20dan%20status.png"  width="560" height="415" />
 <img src="./Image%20Pustaka%20Bit/25%20responsif.png"  width="560" height="415" />
+
+
+## Responsive design
+<img src="./Image%20Pustaka%20Bit/responsif2.png"  />
 
 
 
