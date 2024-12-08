@@ -6,8 +6,8 @@ Proyek ini adalah aplikasi toko buku IT online yang dibangun menggunakan **Larav
 
 - **Autentikasi Pengguna:** Pengguna dapat mendaftar, masuk, dan mengelola akun mereka.
 - **Manajemen Buku:** Admin dapat menambahkan, mengedit, dan menghapus buku yang tersedia di toko.
-- **Kategori Buku:** Buku dibagi dalam berbagai kategori yang memudahkan pengguna untuk mencari.
-- **Pencarian Berdasarkan Harga:** Pengguna dapat mencari buku dengan rentang harga tertentu.
+- **Kategori Buku:** Buku dibagi dalam berbagai kategori yang memudahkan pengguna untuk mencari (Menggunakan algoritma hashmap).
+- **Pencarian Berdasarkan Harga:** Pengguna dapat mencari buku dengan rentang harga tertentu (Menggunakan algoritma quicksort).
 - **Pembayaran:** Fitur pembayaran untuk memproses pesanan menggunakan sistem pembayaran yang tersedia.
 - **Responsive Design:** Tampilan aplikasi yang responsif dan mobile-friendly, dibangun dengan Tailwind CSS.
 - **Riwayat Pembelian:** Tampilan riwayat pembelian pelanggan dengan status pesanan.
