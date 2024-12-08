@@ -21,7 +21,6 @@ Proyek ini adalah aplikasi toko buku online yang dibangun menggunakan **Laravel 
 
 ![Register](https://github.com/Palinrungi/Pustaka-Bit_Online_Book_Store/blob/main/Image%20Pustaka%20Bit/3%20regist.png)
 
-![Register](https://github.com/Palinrungi/Pustaka-Bit_Online_Book_Store/blob/main/Image%20Pustaka%20Bit/4%20login.png)
 
 ![Deskripsi Gambar](./Image%20Pustaka%20Bit/4%20login.png)
 
