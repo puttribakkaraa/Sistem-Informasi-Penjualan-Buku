@@ -13,15 +13,15 @@
         
         <!-- Judul -->
         <div class="text-center">
-            <h1 class="text-4xl font-extrabold text-blue-800 tracking-wide">Pustaka Bit</h1>
-            <p class="mt-2 text-lg text-gray-500 font-medium">Toko Buku IT Terpercaya</p>
+           
+            <p class="mt-2 text-lg text-gray-500 font-medium">Toko Buku Terpercaya</p>
         </div>
 
         <!-- Menampilkan nama pengguna jika sudah login -->
       
         <div class="bg-gradient-to-r from-blue-800 via-indigo-600 to-teal-400 text-white p-6 rounded-lg shadow-lg text-center mb-6 mt-6">
             <h1 class="text-3xl font-semibold">
-                Hai <span class="font-extrabold">Admin</span>,
+               Selamat Datang,<span class="font-extrabold">Admin</span>,
             </h1>
         </div>
     

@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:title>Pustaka Bit</x-slot:title>
+    <x-slot:title>Media Cendekia Muslim</x-slot:title>
 
     <div class="container mx-auto mt-10 px-4">
         <div class="mb-6">
@@ -13,6 +13,7 @@
                 <thead class="bg-indigo-600 text-white">
                     <tr>
                         <th class="py-3 px-6 text-sm font-medium text-left">No</th>
+                         <th class="py-3 px-6 text-sm font-medium text-left">Nama</th>
                         <th class="py-3 px-6 text-sm font-medium text-left">Judul Buku</th>
                         <th class="py-3 px-6 text-sm font-medium text-left">Jumlah Item</th>
                         <th class="py-3 px-6 text-sm font-medium text-left">Alamat</th>
@@ -28,6 +29,7 @@
                     @foreach($pembelianList as $index => $pembelian)
                         <tr class="hover:bg-gray-50">
                             <td class="py-3 px-6 text-sm text-gray-700">{{ $index + 1 }}</td>
+                            <td class="py-3 px-6 text-sm text-gray-700">{{ $pembelian->user->name }}</td>
                             <td class="py-3 px-6 text-sm text-gray-700">{{ $pembelian->BUKU_JUDUL }}</td>
                             <td class="py-3 px-6 text-sm text-gray-700">{{ $pembelian->JUMLAH_ITEM }}</td>
                             <td class="py-3 px-6 text-sm text-gray-700">{{ $pembelian->ALAMAT}}</td>
@@ -39,7 +41,7 @@
                                     @if($pembelian->status_pesanan == 'diproses') bg-yellow-200 text-yellow-800 
                                     @elseif($pembelian->status_pesanan == 'dikirim') bg-blue-600 text-white 
                                     @elseif($pembelian->status_pesanan == 'ditolak') bg-red-600 text-white 
-                                    @elseif($pembelian->status_pesanan == 'sampai') bg-green-600 text-white 
+                                    @elseif($pembelian->status_pesanan == 'selesai') bg-black-600 text-white 
                                     @else bg-gray-200 text-gray-800 
                                     @endif">
                                     {{ $pembelian->status_pesanan }}
@@ -54,14 +56,17 @@
                                      </button>
                                     <!-- <button type="submit" class="mt-2 text-white bg-indigo-600 px-3 py-1 rounded-md">Konfirmasi</button> -->
                                 </form>
-
+                                
                             </td>
                         </tr>
                     @endforeach
+                    
                 </tbody>
             </table>
         </div>
-
+         <a href="{{ url('/Buku') }}" class="inline-block mb-6 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded">
+                    ⬅️ Kembali ke Daftar Buku
+                </a>
         <!-- Pesan jika tidak ada data pembelian -->
         @if($pembelianList->isEmpty())
             <div class="mt-4 p-4 bg-gray-100 text-center text-gray-600 rounded-lg shadow-md">

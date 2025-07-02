@@ -1,5 +1,5 @@
 <x-layoutbefore>
-    <x-slot:title>Pustaka Bit</x-slot:title>
+    <x-slot:title>Media Cendekia Muslim</x-slot:title>
 
 <body class="bg-gray-100 font-sans">
 
@@ -47,6 +47,25 @@
                            class="mt-4 w-20 bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all text-center block">
                             Beli
                         </a>
+                       <form action="{{ route('cart.add') }}" method="POST" class="mt-4 space-y-2">
+    @csrf
+    <input type="hidden" name="buku_isbn" value="{{ $book->BUKU_ISBN }}">
+
+    <div class="flex items-center space-x-2">
+        <label for="jumlah" class="text-sm font-medium">Jumlah:</label>
+        <input type="number" name="jumlah" id="jumlah" value="1" min="1"
+               class="w-20 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+    </div>
+
+    <button type="submit"
+        class="w-full bg-green-300 hover:bg-green-400 text-white font-semibold py-2 px-4 rounded shadow-md transition duration-200">
+        Tambah ke Keranjang
+    </button>
+</form>
+
+
+
+
                     </div>
                 </li>
             @endforeach

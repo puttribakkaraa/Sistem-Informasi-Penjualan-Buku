@@ -6,15 +6,13 @@
     <title>Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 min-h-screen">>
+<body class="bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 min-h-screen">
 
     <!-- Kontainer utama -->
     <div class="container mx-auto mt-20 p-8 bg-white rounded-2xl shadow-2xl max-w-lg border border-gray-200">
         
-        <!-- Judul -->
-        <div class="text-center">
-            <h1 class="text-4xl font-extrabold text-blue-800 tracking-wide">Pustaka Bit</h1>
-            <p class="mt-2 text-lg text-gray-500 font-medium">Toko Buku IT Terpercaya</p>
+        
+            <p class="mt-2 text-lg text-gray-500 font-medium">Toko Buku Terpercaya</p>
         </div>
 
         <!-- Menampilkan nama pengguna jika sudah login -->

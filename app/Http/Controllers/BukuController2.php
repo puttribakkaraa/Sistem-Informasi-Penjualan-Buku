@@ -19,7 +19,7 @@ class BukuController2 extends Controller
         $books = Buku::with('Penerbit')->orderBy('BUKU_TGLTERBIT', 'desc')->take(5)->get();
 
 
-        $title = 'Pustaka Bit';
+        $title = 'Media Cendekia Muslim';
 
         // Menghitung statistik
         $totalBuku = Buku::count();

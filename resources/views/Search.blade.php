@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:title>Pustaka Bit</x-slot:title>
+    <x-slot:title>Media Cendekia Muslim</x-slot:title>
 
 <body class="bg-gray-100 font-sans">
 
@@ -31,13 +31,17 @@
                 <li class="flex items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200">
                     <!-- Gambar Buku di Sisi Kiri -->
                     <div class="w-32 h-48 bg-gray-200 rounded-lg overflow-hidden mr-6">
-                        <img class="w-full h-full object-cover" src="/images/buku.jpeg" alt="Cover Buku">
+                        <img class="w-full h-full object-cover" 
+                        src="{{ asset('images/' . $book->BUKU_GAMBAR) }}" 
+                        alt="Cover Buku">
+
                     </div>
 
                     <!-- Detail Buku di Sisi Kanan -->
                     <div class="flex-1">
                         <h3 class="text-xl font-semibold text-gray-800">{{ $book->BUKU_JUDUL }}</h3>
-                        <p class="text-sm text-gray-600 mt-1">Penerbit: {{ $book->PENERBIT_ID }}</p>
+                        <p class="text-sm text-gray-600 mt-1">Penerbit: {{ $book->penerbit->PENERBIT_NAMA ?? 'Tidak diketahui' }}</p>
+
                         <p class="text-sm text-gray-600 mt-1">Harga: <span class="font-semibold">Rp {{ number_format($book->BUKU_HARGA, 2, ',', '.') }}</span></p>
                          <a href="{{ route('pembelian.tampil', [
                             'judul_buku' => urlencode($book->BUKU_JUDUL),
@@ -47,6 +51,20 @@
                            class="mt-4 w-20 bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all text-center block">
                             Beli
                         </a>
+    
+                     <form action="{{ route('cart.add') }}" method="POST" class="mt-4 flex items-center space-x-2">
+    @csrf
+    <input type="hidden" name="buku_isbn" value="{{ $book->BUKU_ISBN }}">
+    <input type="number" name="jumlah" value="1" min="1"
+        class="w-16 border border-gray-300 rounded px-2 py-1 text-center focus:ring-indigo-500 focus:outline-none">
+
+    <button type="submit"
+        class="bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-3 py-2 rounded shadow">
+        + Keranjang
+    </button>
+</form>
+
+
                     </div>
                 </li>
             @endforeach

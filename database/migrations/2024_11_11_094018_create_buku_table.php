@@ -17,6 +17,9 @@ class CreateBukuTable extends Migration
             $table->integer('BUKU_JMLHALAMAN')->nullable();
             $table->text('BUKU_DESKRIPSI')->nullable();
             $table->decimal('BUKU_HARGA', 10, 2)->nullable();
+Schema::table('bukus', function (Blueprint $table) {
+    $table->string('BUKU_GAMBAR')->nullable();
+});
 
             // Foreign key ke tabel PENERBIT
             $table->foreign('PENERBIT_ID')->references('PENERBIT_ID')->on('PENERBIT')->onDelete('cascade');

@@ -10,7 +10,7 @@ class DaftarBukuController extends Controller
     {
         // Data buku dari database dan variabel tambahan untuk title
         $bukuList = Buku::all();
-        $title = 'Pustaka Bit';
+        $title = 'Media Cendekia Muslim';
 
         // Mengirim data buku dan title ke view
         return view('Buku', compact('bukuList', 'title'));
@@ -20,7 +20,7 @@ class DaftarBukuController extends Controller
     {
         // Data buku dari database dan variabel tambahan untuk title
         $bukuList = Buku::all();
-        $title = 'Pustaka Bit';
+        $title = 'Media Cendekia Muslim';
 
         // Mengirim data buku dan title ke view
         return view('BukuBefore', compact('bukuList', 'title'));

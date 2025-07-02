@@ -1,171 +1,93 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-<!-- Your content -->
-
+    <!-- Header Selamat Datang -->
     <div class="bg-gradient-to-r from-blue-500 to-teal-500 text-white p-6 rounded-lg shadow-lg text-center mb-6">
         <h1 class="text-3xl font-semibold">
-            Hai <span class="font-extrabold">{{ Auth::user()->name }}</span>, 
+            Hai <span class="font-extrabold">{{ auth()->check() ? auth()->user()->name : 'Pengunjung' }}</span>,
         </h1>
-        <p class="mt-2 text-lg">Selamat datang di Pustaka Bit, tempat belanja buku IT terbaik!</p>
+        <p class="mt-2 text-lg">Selamat datang di Media Cendekia Muslim, tempat belanja buku terbaik!</p>
     </div>
 
-    
-<!-- images slider -->
-<div id="gallery" class="relative w-full mb-6" data-carousel="slide">
-    <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-        <!-- Item 1 -->
-        <div class="absolute top-0 left-0 w-full h-full duration-700 ease-in-out" data-carousel-item>
-            <img src="/images/gambar web buku 1.jpg" class="w-full h-full object-cover" alt="Image 1">
+    <!-- Image Slider -->
+    <div id="default-carousel" class="relative w-full mb-6" data-carousel="slide">
+        <!-- Carousel wrapper -->
+        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+            @for ($i = 1; $i <= 6; $i++)
+                <div class="{{ $i === 1 ? 'block' : 'hidden' }} duration-700 ease-in-out" data-carousel-item>
+                    <img src="{{ asset('images/kegiatan' . $i . '.jpg') }}"
+                         class="absolute block w-full h-full object-cover"
+                         alt="Slide {{ $i }}">
+                </div>
+            @endfor
         </div>
-        <!-- Item 2 -->
-        <div class="absolute top-0 left-full w-full h-full duration-700 ease-in-out" data-carousel-item>
-            <img src="/images/gambar web buku 2.jpg" class="w-full h-full object-cover" alt="Image 2">
-        </div>
-        <!-- Item 3 -->
-        <div class="absolute top-0 left-full w-full h-full duration-700 ease-in-out" data-carousel-item>
-            <img src="/images/gambar web buku 3.jpg" class="w-full h-full object-cover" alt="Image 3">
-        </div>
-        <!-- Item 4 -->
-        <div class="absolute top-0 left-full w-full h-full duration-700 ease-in-out" data-carousel-item>
-            <img src="/images/gambar web buku 4.jpg" class="w-full h-full object-cover" alt="Image 4">
-        </div>
-        <!-- Item 5 -->
-        <div class="absolute top-0 left-full w-full h-full duration-700 ease-in-out" data-carousel-item>
-            <img src="/images/gambar web buku 5.jpg" class="w-full h-full object-cover" alt="Image 5">
-        </div>
+
+        <!-- Slider controls -->
+        <button type="button"
+                class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-prev>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 6 10">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                </svg>
+            </span>
+        </button>
+        <button type="button"
+                class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-next>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 6 10">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 9l4-4-4-4"/>
+                </svg>
+            </span>
+        </button>
     </div>
 
-    <!-- Slider controls -->
-    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
-</div>
+    <!-- PENTING! Tambahkan Script Flowbite -->
+    @push('scripts')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    @endpush
 
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/forms@0.4.0/dist/index.min.js"></script>
-
-<script>
-    // Inisialisasi untuk kontrol carousel
-    const prev = document.querySelector('[data-carousel-prev]');
-    const next = document.querySelector('[data-carousel-next]');
-    const items = document.querySelectorAll('[data-carousel-item]');
-
-    let currentIndex = 0;
-
-    // Fungsi untuk menampilkan item carousel berikutnya
-    function showNextItem() {
-        // Animasi geser ke kiri
-        items[currentIndex].classList.remove('left-0');
-        items[currentIndex].classList.add('left-full');
-        items[currentIndex].classList.add('transition-all', 'duration-700', 'ease-in-out');
-        
-        // Pindah ke item berikutnya
-        currentIndex = (currentIndex + 1) % items.length;
-        items[currentIndex].classList.remove('left-full');
-        items[currentIndex].classList.add('left-0');
-    }
-
-    // Fungsi untuk menampilkan item carousel sebelumnya
-    function showPrevItem() {
-        // Animasi geser ke kanan
-        items[currentIndex].classList.remove('left-0');
-        items[currentIndex].classList.add('left-full');
-        items[currentIndex].classList.add('transition-all', 'duration-700', 'ease-in-out');
-        
-        // Pindah ke item sebelumnya
-        currentIndex = (currentIndex - 1 + items.length) % items.length;
-        items[currentIndex].classList.remove('left-full');
-        items[currentIndex].classList.add('left-0');
-    }
-
-    // Kontrol tombol 'prev' dan 'next'
-    prev.addEventListener('click', showPrevItem);
-    next.addEventListener('click', showNextItem);
-
-    // Autoplay: Ganti gambar setiap 3 detik (3000 milidetik)
-    setInterval(showNextItem, 3000);  // Mengganti gambar otomatis setiap 3 detik
-</script>
-
-
-
-
-<!-- images slider akhir -->
-
-
-<!-- Dashboard Cards -->
-<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-10">
-    <!-- Total Buku Card -->
-    <div class="bg-white rounded-lg shadow p-6">
-        <h3 class="text-xl font-semibold text-blue-600">Total Buku</h3>
-        <p class="text-4xl font-bold mt-2">{{ $totalBuku }}</p>
-    </div>
-
-    <!-- Total Kategori Card -->
-    <div class="bg-white rounded-lg shadow p-6">
-        <h3 class="text-xl font-semibold text-purple-600">Total Kategori</h3>
-        <p class="text-4xl font-bold mt-2">{{ $totalKategori }}</p>
-    </div>
-
-    <!-- Total Penerbit Card -->
-    <div class="bg-white rounded-lg shadow p-6">
-        <h3 class="text-xl font-semibold text-green-600">Total Penerbit</h3>
-        <p class="text-4xl font-bold mt-2">{{ $totalPenerbit }}</p>
-    </div>
-
-    <!-- Total Penjualan Card -->
-  <div class="bg-white rounded-lg shadow p-6">
-    <h3 class="text-xl font-semibold text-red-600">Total Penjualan</h3>
-    <p class="text-4xl font-bold mt-2">{{ $totalPembelian }}</p>
-  </div>
-
-
-
-</div>
-
-<div class="mt-10 bg-white shadow rounded-lg overflow-hidden">
-    <h3 class="text-2xl font-semibold p-6">Buku Terbitan Terbaru</h3>
-    <table class="w-full">
-        <thead>
-            <tr class="bg-gray-200 text-gray-700">
-                <th class="py-3 px-4 text-left">Judul Buku</th>
-                <th class="py-3 px-4 text-left">Penerbit</th>
-                <th class="py-3 px-4 text-left">Tanggal Terbit</th>
-                <th class="py-3 px-4 text-left">Harga</th>
-            </tr>
-        </thead>
-        <tbody>
+    <!-- Buku Terbitan Terbaru -->
+    <div class="mt-10">
+        <h3 class="text-2xl font-semibold mb-4">Buku Terbitan Terbaru</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             @foreach($books as $book)
-            <tr class="border-b hover:bg-gray-100">
-                <td class="py-3 px-4">{{ $book->BUKU_JUDUL }}</td>
-                <td class="py-3 px-4">{{ $book->penerbit->PENERBIT_NAMA }}</td>
-                <td class="py-3 px-4">{{ $book->BUKU_TGLTERBIT }}</td>
-                <td class="py-3 px-4">Rp {{ number_format($book->BUKU_HARGA, 0, ',', '.') }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+              <div class="w-full h-48 bg-white flex items-center justify-center overflow-hidden">
+    <img src="{{ asset('images/' . $book->BUKU_GAMBAR) }}" alt="{{ $book->BUKU_JUDUL }}" class="h-full object-contain p-2">
 </div>
 
 
+                <div class="p-4">
+                    <h4 class="text-lg font-bold text-gray-800 truncate">{{ $book->BUKU_JUDUL }}</h4>
+                    <p class="text-sm text-gray-600 mt-1">Penerbit: {{ $book->penerbit->PENERBIT_NAMA }}</p>
+                    <p class="text-sm text-green-600">Stok Tersedia</p>
+                   
+                    <p class="text-indigo-600 text-lg font-bold">Rp {{ number_format($book->BUKU_HARGA, 0, ',', '.') }}</p>
 
-
-
-
-
+                    <div class="mt-3 flex justify-between">
+                        <a href="{{ route('pembelian.tampil', [
+                            'judul_buku' => urlencode($book->BUKU_JUDUL),
+                            'isbn' => $book->BUKU_ISBN,
+                            'harga' => $book->BUKU_HARGA,
+                            'GAMBAR' => $book->BUKU_GAMBAR
+                        ]) }}" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-3 py-2 rounded">
+                            Beli
+                        </a>
+                        <form action="{{ route('cart.add') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="buku_isbn" value="{{ $book->BUKU_ISBN }}">
+                            <input type="hidden" name="jumlah" value="1">
+                            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white text-sm px-3 py-2 rounded">
+                                + Keranjang
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
 </x-layout>
 
-<x-footer></x-footer>

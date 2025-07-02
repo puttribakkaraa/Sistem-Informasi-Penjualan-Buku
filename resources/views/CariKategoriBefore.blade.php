@@ -1,5 +1,5 @@
 <x-layoutBefore>
-    <x-slot:title>Pustaka Bit</x-slot:title>
+    <x-slot:title>Media Cendekia Muslim</x-slot:title>
 <body class="bg-gray-100">
 
 <div class="container mx-auto p-6">
@@ -31,7 +31,10 @@
                  <li class="flex items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200">
                     <!-- Gambar Buku di Sisi Kiri -->
                     <div class="w-32 h-48 bg-gray-200 rounded-lg overflow-hidden mr-6">
-                        <img class="w-full h-full object-cover" src="/images/buku.jpeg" alt="Cover Buku">
+                        <img class="w-full h-full object-cover" 
+                        src="{{ asset('images/' . $buku->BUKU_GAMBAR) }}" 
+                        alt="Cover Buku">
+
                     </div>
                     <div class="bg-white shadow-lg rounded-lg p-4">
                         <h3 class="text-xl font-semibold text-gray-700">{{ $buku->BUKU_JUDUL }}</h3>
@@ -46,6 +49,25 @@
                            class="mt-4 w-20 bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all text-center block">
                             Beli
                         </a>
+                        <form action="{{ route('cart.add') }}" method="POST" class="mt-4 space-y-2">
+    @csrf
+    <input type="hidden" name="buku_isbn" value="{{ $buku->BUKU_ISBN }}">
+
+
+    <div class="flex items-center space-x-2">
+        <label for="jumlah" class="text-sm font-medium">Jumlah:</label>
+        <input type="number" name="jumlah" id="jumlah" value="1" min="1"
+               class="w-20 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+    </div>
+
+    <button type="submit"
+        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow-md transition duration-200">
+        Tambah ke Keranjang
+    </button>
+</form>
+
+
+
                     </div>
                     </li>
                 @endforeach

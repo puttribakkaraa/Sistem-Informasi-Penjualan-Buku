@@ -7,30 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class LinkBukuKategori extends Model
 {
-    use HasFactory;
-
-
-     // Menonaktifkan penggunaan timestamps
-    public $timestamps = false;
-    
-    // Menentukan nama tabel
     protected $table = 'link_buku_kategori';
+    public $timestamps = false;
 
-    // Menentukan kolom-kolom yang bisa diisi
-    protected $fillable = [
-        'buku_isbn',
-        'kategori_id',
-    ];
+    protected $fillable = ['buku_isbn', 'KATEGORI_ID'];
 
-    // Relasi dengan model Buku (One-to-Many)
-    public function buku()
-    {
-        return $this->belongsTo(Buku::class, 'buku_isbn', 'buku_isbn');
-    }
-
-    // Relasi dengan model Kategori (One-to-Many)
-    public function kategori()
-    {
-        return $this->belongsTo(Kategori::class, 'kategori_id', 'KATEGORI_ID');
-    }
+    protected $primaryKey = null;
+    public $incrementing = false;
 }
+
+

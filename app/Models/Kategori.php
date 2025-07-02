@@ -1,23 +1,23 @@
 <?php
 
-// app/Models/Kategori.php
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
-    use HasFactory;
-
-    protected $table = 'KATEGORI'; // Nama tabel
-    protected $primaryKey = 'KATEGORI_ID'; // Primary key
-    public $timestamps = false; // Tidak menggunakan timestamp otomatis
+    protected $table = 'kategori';
+    protected $primaryKey = 'KATEGORI_ID'; // ⬅️ WAJIB, biar Laravel pakai ini
+    public $timestamps = false;
 
     protected $fillable = [
+        'KATEGORI_ID',
         'KATEGORI_NAMA',
     ];
 
-    // Relasi dengan model Buku (jika ada)
+    public function linkBukuKategori()
+    {
+        return $this->hasMany(LinkBukuKategori::class, 'KATEGORI_ID', 'KATEGORI_ID');
+    }
 }
 

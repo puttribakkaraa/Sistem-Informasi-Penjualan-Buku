@@ -1,45 +1,57 @@
-<x-layoutadmin>
-     <x-slot:title>Hai Admin</x-slot:title>
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+@extends('layouts.layoutadmin')
 
-    <div class="container mx-auto p-6">
-        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Daftar Buku</h1>
-        <a href="{{ route('buku.create') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-md mb-4">Tambah Buku</a>
+@section('content')
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-semibold text-white-900 mb-4">Daftar Buku</h1>
+    <a href="{{ route('buku.create') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-md mb-4">Tambah Buku</a>
 
-        @if(session('success'))
-            <div class="bg-green-500 text-white p-2 rounded-md mb-4">
-                {{ session('success') }}
-            </div>
-        @endif
+    @if(session('success'))
+        <div class="bg-green-500 text-white p-2 rounded-md mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
 
-        <table class="min-w-full table-auto bg-white rounded-md shadow-md">
-            <thead>
-                <tr class="border-b">
-                    <th class="px-4 py-2 text-left text-gray-700">ISBN</th>
-                    <th class="px-4 py-2 text-left text-gray-700">Judul</th>
-                    <th class="px-4 py-2 text-left text-gray-700">Penerbit</th>
-                    <th class="px-4 py-2 text-left text-gray-700">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($bukus as $buku)
-                    <tr class="border-b">
-                        <td class="px-4 py-2 text-gray-700">{{ $buku->BUKU_ISBN }}</td>
-                        <td class="px-4 py-2 text-gray-700">{{ $buku->BUKU_JUDUL }}</td>
-                        <td class="px-4 py-2 text-gray-700">{{ $buku->penerbit->PENERBIT_NAMA }}</td>
-                        <td class="px-4 py-2">
-                            <a href="{{ route('buku.edit', $buku->BUKU_ISBN) }}" class="text-blue-500 hover:underline">Edit</a>
-                            <form action="{{ route('buku.destroy', $buku->BUKU_ISBN) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-red-500 hover:underline ml-4">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</body>
-</x-layoutadmin>
-<x-footer></x-footer>
+    <table class="min-w-full table-auto bg-white rounded-md shadow-md">
+        <thead>
+            <tr class="border-b">
+                <th class="px-4 py-2 text-left text-gray-700">GAMBAR</th>
+                <th class="px-4 py-2 text-left text-gray-700">ISBN</th>
+                <th class="px-4 py-2 text-left text-gray-700">JUDUL</th>
+                <th class="px-4 py-2 text-left text-gray-700">Stok</th>
+                <th class="px-4 py-2 text-left text-gray-700">Penerbit</th>
+                <th class="px-4 py-2 text-left text-gray-700">Harga</th>
+                <th class="px-4 py-2 text-left text-gray-700">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+           @foreach($bukuList as $buku)
+
+            <tr class="border-b">
+                <td class="px-4 py-2">
+                    @if ($buku->BUKU_GAMBAR)
+                        <img src="{{ asset('images/' . $buku->BUKU_GAMBAR) }}" alt="Cover Buku" class="w-16 h-20 object-cover rounded">
+                    @else
+                        <span class="text-gray-400 italic">Tidak ada gambar</span>
+                    @endif
+                </td>
+                <td class="px-4 py-2 text-gray-700">{{ $buku->BUKU_ISBN }}</td>
+                <td class="px-4 py-2 text-gray-700">{{ $buku->BUKU_JUDUL }}</td>
+                <td class="px-4 py-2 text-gray-700">{{ $buku->stok }}</td>
+                <td class="px-4 py-2 text-gray-700">{{ $buku->penerbit->PENERBIT_NAMA }}</td>
+                <td class="px-4 py-2 text-gray-700">{{ number_format($buku->BUKU_HARGA, 0, ',', '.') }}</td>    
+                <td class="px-4 py-2">
+                    <div class="flex gap-2">
+                        <a href="{{ route('buku.edit', $buku->BUKU_ISBN) }}" class="bg-black hover:bg-gray-800 text-white px-3 py-2 rounded-md font-bold">Edit</a>
+                        <form action="{{ route('buku.destroy', $buku->BUKU_ISBN) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md font-semibold">Hapus</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection

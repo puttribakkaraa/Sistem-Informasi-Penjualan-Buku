@@ -3,7 +3,7 @@
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="shrink-0">
-            <img class="h-12 w-12" src="/images/logo pustaka bit.png" alt="">
+            <img class="h-12 w-15" src="/images/logomcm.jpg" alt="">
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
@@ -11,7 +11,7 @@
               <x-Nav-Link href="/ " :active="request()->is('/')">Dashboard</x-Nav-Link>
               <x-Nav-Link href="/BukuBefore" :active="request()->is('BukuBefore')">Buku</x-Nav-Link>
               <!-- <x-Nav-Link href="/pembelian/history" :active="request()->is('pembelian/history')">Riwayat Pembelian</x-Nav-Link> -->
-               
+             
             </div>
           </div>
         </div>
@@ -80,7 +80,8 @@
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3 mb-5px">
         <!-- Current: "bg-purple-700 text-white", Default: "text-gray-300 hover:bg-purple-500 hover:text-white" -->
               <x-Nav-Link href="/" :active="request()->is('/')">Dashboard</x-Nav-Link>
-              <x-Nav-Link href="/BukuBefore" :active="request()->is('BukuBefore')">Buku</x-Nav-Link>
+            <x-Nav-Link href="{{ route('buku.before') }}" :active="request()->is('BukuBefore')">Buku</x-Nav-Link>
+
       <div class="border-t border-purple-600 pb-3 pt-4">
         <div class="flex items-center px-5">
           <div class="shrink-0">
