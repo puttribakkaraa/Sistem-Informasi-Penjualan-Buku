@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Buku extends Model
 {
-    protected $table = 'BUKU';
+    protected $table = 'buku';
     protected $primaryKey = 'BUKU_ISBN';
     public $incrementing = false;
     public $timestamps = false;
