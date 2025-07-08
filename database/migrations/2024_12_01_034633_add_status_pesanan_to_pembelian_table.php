@@ -12,7 +12,8 @@ class AddStatusPesananToPembelianTable extends Migration
     public function up(): void
     {
         Schema::table('pembelian', function (Blueprint $table) {
-            $table->enum('status_pesanan', ['diproses', 'dikirim', 'ditolak', 'selesai'])->default('diterima');
+           $table->enum('status_pesanan', ['diproses', 'dikirim', 'ditolak', 'selesai'])->default('diproses');
+
         });
     }
 
