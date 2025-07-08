@@ -11,8 +11,9 @@ class CreateLinkBukuKategoriTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+   public function up()
+{
+    if (!Schema::hasTable('link_buku_kategori')) {
         Schema::create('link_buku_kategori', function (Blueprint $table) {
             // Kolom buku_isbn
             $table->char('buku_isbn', 13);
@@ -26,14 +27,15 @@ class CreateLinkBukuKategoriTable extends Migration
             // Mendefinisikan foreign key
             $table->foreign('buku_isbn')
                 ->references('buku_isbn')->on('buku')
-                ->onDelete('cascade'); // Opsional, tergantung kebutuhan
+                ->onDelete('cascade');
 
-            // Mendefinisikan foreign key
             $table->foreign('kategori_id')
                 ->references('KATEGORI_ID')->on('KATEGORI')
-                ->onDelete('cascade'); // Opsional, tergantung kebutuhan
+                ->onDelete('cascade');
         });
     }
+}
+
 
     /**
      * Rollback migration untuk menghapus tabel.
