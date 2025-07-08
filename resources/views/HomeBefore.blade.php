@@ -108,6 +108,20 @@
             </tbody>
         </table>
     </div>
+    <!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (session('popup'))
+<script>
+    Swal.fire({
+        title: 'Halo!',
+        text: "{{ session('popup') }}",
+        icon: 'info',
+        confirmButtonText: 'Oke'
+    });
+</script>
+@endif
+
 </x-layoutBefore>
 
 <x-footer />

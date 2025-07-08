@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Pesanan Diterima</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 min-h-screen">
+<body class="min-h-screen bg-gradient-to-br from-blue-100 via-indigo-200 to-teal-100 flex items-center justify-center">
 
-    <!-- Kontainer utama -->
-    <div class="container mx-auto mt-20 p-8 bg-white rounded-2xl shadow-2xl max-w-lg border border-gray-200">
-        
-        
-            <p class="mt-2 text-lg text-gray-500 font-medium">Toko Buku Terpercaya</p>
-        </div>
+  <!-- Kontainer isi -->
+  <div class="bg-white/90 border border-gray-200 backdrop-blur-md shadow-2xl rounded-2xl w-full max-w-md px-8 py-10 text-center">
 
-        <!-- Menampilkan nama pengguna jika sudah login -->
-      
-        <div class="bg-gradient-to-r from-blue-800 via-indigo-600 to-teal-400 text-white p-6 rounded-lg shadow-lg text-center mb-6 mt-6">
-            <h1 class="text-3xl font-semibold">
-                Hai <span class="font-extrabold">Pesanan anda telah diterima</span>,
-            </h1>
-        </div>
-    
-    
+    <!-- Subjudul -->
+    <p class="text-sm text-gray-500 mb-4 font-medium tracking-wide">Toko Buku Terpercaya</p>
 
-        <!-- Tombol Lanjut -->
-        <div class="mt-8 text-center">
-            <p class="mt-2 text-lg text-gray-600 " >Klik untuk melanjutkan</p>
-            <a href="/Home" class="w-full inline-block">
-                <button class="w-full bg-gradient-to-r from-blue-500 via-teal-400 to-green-500 text-white py-3 rounded-lg shadow-md hover:bg-gradient-to-l hover:from-green-500 hover:to-blue-500 focus:outline-none focus:ring-2 focus:ring-teal-300 mt-6">
-                    Lanjut
-                </button>
-            </a>
-        </div>
+    <!-- Pesan -->
+    <div class="bg-gradient-to-r from-blue-800 via-indigo-600 to-teal-400 text-white rounded-xl px-6 py-8 shadow-md mb-6">
+      <h1 class="text-xl font-semibold leading-snug">
+        Hai!
+        <span class="text-white text-2xl font-extrabold block mt-2">Pesanan anda telah diterima</span>
+      </h1>
     </div>
+
+    <!-- Arahkan pengguna -->
+    <p class="text-gray-600 mb-4">Klik tombol di bawah untuk melanjutkan</p>
+    <a href="/Home" class="block">
+      <button class="w-full bg-gradient-to-r from-blue-500 via-teal-400 to-green-500 text-white font-semibold py-3 rounded-lg shadow-md hover:from-green-500 hover:to-blue-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-teal-300">
+        Lanjut
+      </button>
+    </a>
+  </div>
 
 </body>
 </html>

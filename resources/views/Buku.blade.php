@@ -43,14 +43,16 @@
                              alt="{{ $buku->BUKU_JUDUL }}"
                              class="h-full object-contain p-2">
                     </div>
-
+                       
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-gray-800 truncate">{{ $buku->BUKU_JUDUL }}</h3>
-                        <p class="text-sm text-gray-600 mt-1">Penerbit: {{ $buku->penerbit->PENERBIT_NAMA ?? 'Tidak Ada' }}</p>
+                        <p class="text-sm text-gray-600 mt-1">Penulis: {{ $buku->penerbit->PENERBIT_NAMA ?? 'Tidak Ada' }}</p>
                         <p class="text-sm text-gray-500">Halaman: {{ $buku->BUKU_JMLHALAMAN }}</p>
                         <p class="text-sm text-gray-500">Stok: {{ $buku->stok }}</p>
                         <p class="text-indigo-600 text-lg font-bold mt-1">Rp {{ number_format($buku->BUKU_HARGA, 0, ',', '.') }}</p>
-
+                         <a href="{{ route('buku.detail', $buku->BUKU_ISBN) }}" class="mt-3 block text-center bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm px-3 py-2 rounded">
+        Lihat Detail
+    </a>
                         <div class="mt-3 flex justify-between">
                             <a href="{{ route('pembelian.tampil', [
                                 'judul_buku' => urlencode($buku->BUKU_JUDUL),

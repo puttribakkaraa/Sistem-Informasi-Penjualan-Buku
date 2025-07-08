@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Dashboard Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body class="bg-gray-300 font-sans antialiased">
 
@@ -14,7 +17,7 @@
     <div class="ml-64 transition-all duration-300" id="mainContent">
         <!-- Header -->
         <div class="flex justify-between items-center p-4 bg-white shadow">
-            <button onclick="toggleSidebar()" class="text-2xl bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800">☰</button>
+            <button onclick="toggleSidebar()" class="text-2xl bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800">☰</button>
 
            <!-- Dropdown user -->
 <div class="relative inline-block text-left">

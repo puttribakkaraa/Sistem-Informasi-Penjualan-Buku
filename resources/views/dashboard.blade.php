@@ -10,16 +10,17 @@
   <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="bg-blue-700 text-white w-64 transition-all duration-300 flex flex-col">
-      <div class="flex items-center justify-between p-4 border-b border-green-600">
+   <aside id="sidebar" class="bg-gradient-to-b from-blue-600 via-blue-700 to-blue-800 text-white w-64 transition-all duration-300 flex flex-col">
+    <div class="flex items-center justify-between p-4 border-b border-blue-500">
         <span class="text-2xl font-bold">Media Cendekia</span>
         <button onclick="toggleSidebar()" class="text-white text-xl">☰</button>
-      </div>
+    </div>
+
       <nav class="flex-1 p-4 space-y-2">
         <a href="#" class="block py-2 px-4 rounded hover:bg-grey-800 transition">Dashboard</a>
         <a href="#" class="block py-2 px-4 rounded hover:bg-grey-800 transition">Data Buku</a>
         <a href="#" class="block py-2 px-4 rounded hover:bg-grey-800 transition">Kategori</a>
-        <a href="#" class="block py-2 px-4 rounded hover:bg-grey-800 transition">Penerbit</a>
+        <a href="#" class="block py-2 px-4 rounded hover:bg-grey-800 transition">Penulis</a>
         <a href="#" class="block py-2 px-4 rounded hover:bg-grey-800 transition">Pengarang</a>
         <a href="#" class="block py-2 px-4 rounded hover:bg-grey-800 transition">Pesanan</a>
       </nav>

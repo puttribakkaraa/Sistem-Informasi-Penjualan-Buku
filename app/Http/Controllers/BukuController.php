@@ -105,6 +105,29 @@ public function searchByHarga(Request $request)
 
     return view('Buku', compact('bukuList', 'title'));
 }
+public function show($isbn)
+{
+    $buku = Buku::with(['penerbit', 'kategoris'])->where('BUKU_ISBN', $isbn)->firstOrFail();
+
+    // Ambil kategori pertama yang dimiliki buku
+    $kategori = $buku->kategoris->first(); // Jika ada lebih dari satu, kita ambil satu dulu
+
+    $rekomendasi = collect(); // Default, koleksi kosong
+
+    if ($kategori) {
+        $rekomendasi = Buku::whereHas('kategori', function ($query) use ($kategori) {
+            $query->where('kategori.KATEGORI_ID', $kategori->KATEGORI_ID);
+        })
+        ->where('BUKU_ISBN', '!=', $buku->BUKU_ISBN)
+        ->inRandomOrder()
+        ->take(4)
+        ->get();
+    }
+
+    return view('buku.detail', compact('buku', 'rekomendasi'));
+}
+
+
 
     public function store(Request $request)
     {

@@ -15,7 +15,7 @@
             <p class="text-sm text-gray-500 mt-2 text-center">Silakan daftar untuk membuat akun baru dan nikmati semua fitur kami.</p>
 
             <div class="mt-10 text-sm text-gray-400 text-center">
-                <p>&copy; 2025 Website Kami</p>
+                <p>&copy; 2025 Media Cendekia Muslim. All Rights Reserved.</p>
             </div>
         </div>
 

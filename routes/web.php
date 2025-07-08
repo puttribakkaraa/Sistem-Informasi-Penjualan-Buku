@@ -26,6 +26,15 @@ use App\Http\Controllers\LaporanPenjualanController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\BukuBeforeController;
 use App\Http\Controllers\AkademiController;
+use App\Http\Controllers\HomeBeforeController;
+use App\Http\Controllers\UlasanController;
+
+
+Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
+
+Route::get('/home-before', [HomeBeforeController::class, 'index'])->name('home.before');
+Route::get('/buku/{isbn}', [\App\Http\Controllers\BukuController::class, 'show'])->name('buku.detail');
+Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store')->middleware('auth');
 
 Route::get('/kirim-naskah', function () { return view('kirim-naskah');});
 Route::post('/owner/logout', [OwnerController::class, 'logout'])->name('owner.logout');

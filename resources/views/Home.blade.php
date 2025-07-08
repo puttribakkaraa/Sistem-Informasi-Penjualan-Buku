@@ -60,31 +60,39 @@
 
 
                 <div class="p-4">
-                    <h4 class="text-lg font-bold text-gray-800 truncate">{{ $book->BUKU_JUDUL }}</h4>
-                    <p class="text-sm text-gray-600 mt-1">Penerbit: {{ $book->penerbit->PENERBIT_NAMA }}</p>
-                    <p class="text-sm text-green-600">Stok Tersedia</p>
-                   
-                    <p class="text-indigo-600 text-lg font-bold">Rp {{ number_format($book->BUKU_HARGA, 0, ',', '.') }}</p>
+    <h4 class="text-lg font-bold text-gray-800 truncate">{{ $book->BUKU_JUDUL }}</h4>
+    <p class="text-sm text-gray-600 mt-1">Penerbit: {{ $book->penerbit->PENERBIT_NAMA }}</p>
+    <p class="text-sm text-green-600">Stok Tersedia</p>
 
-                    <div class="mt-3 flex justify-between">
-                        <a href="{{ route('pembelian.tampil', [
-                            'judul_buku' => urlencode($book->BUKU_JUDUL),
-                            'isbn' => $book->BUKU_ISBN,
-                            'harga' => $book->BUKU_HARGA,
-                            'GAMBAR' => $book->BUKU_GAMBAR
-                        ]) }}" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-3 py-2 rounded">
-                            Beli
-                        </a>
-                        <form action="{{ route('cart.add') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="buku_isbn" value="{{ $book->BUKU_ISBN }}">
-                            <input type="hidden" name="jumlah" value="1">
-                            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white text-sm px-3 py-2 rounded">
-                                + Keranjang
-                            </button>
-                        </form>
-                    </div>
-                </div>
+    <p class="text-indigo-600 text-lg font-bold">Rp {{ number_format($book->BUKU_HARGA, 0, ',', '.') }}</p>
+
+    <!-- Lihat Detail dipisahkan dan diletakkan di bawah harga -->
+    <a href="{{ route('buku.detail', $book->BUKU_ISBN) }}" class="mt-3 block text-center bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm px-3 py-2 rounded">
+        Lihat Detail
+    </a>
+
+    <!-- Tombol Beli dan Keranjang dikelompokkan di bawahnya -->
+    <div class="mt-3 flex justify-between">
+        <a href="{{ route('pembelian.tampil', [
+            'judul_buku' => urlencode($book->BUKU_JUDUL),
+            'isbn' => $book->BUKU_ISBN,
+            'harga' => $book->BUKU_HARGA,
+            'GAMBAR' => $book->BUKU_GAMBAR
+        ]) }}" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-3 py-2 rounded">
+            Beli
+        </a>
+
+        <form action="{{ route('cart.add') }}" method="POST">
+            @csrf
+            <input type="hidden" name="buku_isbn" value="{{ $book->BUKU_ISBN }}">
+            <input type="hidden" name="jumlah" value="1">
+            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white text-sm px-3 py-2 rounded">
+                + Keranjang
+            </button>
+        </form>
+    </div>
+</div>
+
             </div>
             @endforeach
         </div>

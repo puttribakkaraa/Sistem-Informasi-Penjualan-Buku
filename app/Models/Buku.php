@@ -26,6 +26,10 @@ class Buku extends Model
     {
         return $this->belongsTo(Penerbit::class, 'PENERBIT_ID', 'PENERBIT_ID');
     }
+public function ulasan()
+{
+    return $this->hasMany(UlasanBuku::class, 'BUKU_ISBN', 'BUKU_ISBN');
+}
 
     public function kategoris()
     {
