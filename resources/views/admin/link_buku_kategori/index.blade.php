@@ -31,16 +31,26 @@
                         <td class="px-6 py-4">{{ $item->buku_isbn }}</td>
                         <td class="px-6 py-4">{{ $item->kategori_id }}</td>
                         <td class="px-6 py-4">
-                            <div class="flex space-x-4">
-                                <a href="{{ route('admin.link_buku_kategori.edit', ['buku_isbn' => $item->buku_isbn, 'kategori_id' => $item->kategori_id]) }}"
-                                   class="text-yellow-500 hover:text-yellow-600 transition">Edit</a>
-                                <form action="{{ route('admin.link_buku_kategori.destroy', ['buku_isbn' => $item->buku_isbn, 'kategori_id' => $item->kategori_id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-500 hover:text-red-600 transition">Hapus</button>
-                                </form>
-                            </div>
-                        </td>
+        <div class="flex gap-2">
+            <a href="{{ route('admin.link_buku_kategori.edit', ['buku_isbn' => $item->buku_isbn, 'kategori_id' => $item->kategori_id]) }}"
+            class="bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-2 rounded-md font-bold transition">
+                Edit
+            </a>
+            <form id="form-delete-{{ $item->buku_isbn }}-{{ $item->kategori_id }}" 
+      action="{{ route('admin.link_buku_kategori.destroy', ['buku_isbn' => $item->buku_isbn, 'kategori_id' => $item->kategori_id]) }}" 
+      method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="button"
+            onclick="confirmDelete('{{ $item->buku_isbn }}', '{{ $item->kategori_id }}')"
+            class="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md font-semibold transition">
+        Hapus
+    </button>
+</form>
+
+        </div>
+    </td>
+
                     </tr>
                 @endforeach
             </tbody>

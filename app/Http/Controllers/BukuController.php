@@ -11,9 +11,21 @@ use Illuminate\Http\Request;
 
 class BukuController extends Controller
 {
-  public function index()
+  public function index(Request $request)
 {
-    $bukuList = Buku::with('penerbit')->orderBy('BUKU_TGLTERBIT', 'desc')->get();
+    $query = Buku::with('penerbit')->orderBy('BUKU_ISBN', 'asc');
+
+    // Cek jika ada pencarian
+    if ($request->has('q') && $request->q !== null) {
+        $search = $request->q;
+        $query->where(function ($q) use ($search) {
+            $q->where('BUKU_JUDUL', 'like', '%' . $search . '%')
+              ->orWhere('BUKU_ISBN', 'like', '%' . $search . '%');
+        });
+    }
+
+    $bukuList = $query->get();
+
     $title = 'Media Cendekia Muslim';
     $totalBuku = Buku::count();
     $totalKategori = Kategori::count();
@@ -21,8 +33,8 @@ class BukuController extends Controller
     $totalPembelian = Pembelian::count();
 
     return view('buku.index', compact('bukuList', 'title', 'totalBuku', 'totalKategori', 'totalPenerbit', 'totalPembelian'));
-
 }
+
 
 public function searchByHarga(Request $request)
 {
@@ -115,7 +127,7 @@ public function show($isbn)
     $rekomendasi = collect(); // Default, koleksi kosong
 
     if ($kategori) {
-        $rekomendasi = Buku::whereHas('kategori', function ($query) use ($kategori) {
+        $rekomendasi = Buku::whereHas('kategoris', function ($query) use ($kategori) {
             $query->where('kategori.KATEGORI_ID', $kategori->KATEGORI_ID);
         })
         ->where('BUKU_ISBN', '!=', $buku->BUKU_ISBN)
@@ -156,47 +168,44 @@ public function show($isbn)
     }
     public function searchBinary(Request $request)
 {
-    $keyword = strtolower($request->get('q'));
+    $keyword = $request->get('q'); // Tidak diubah ke lowercase
 
-    // Ambil semua buku, urutkan berdasarkan judul
     $books = Buku::with('penerbit')->orderBy('BUKU_JUDUL')->get();
     $booksArray = $books->toArray();
 
-    // Binary search manual
     $left = 0;
     $right = count($booksArray) - 1;
     $foundBooks = [];
 
     while ($left <= $right) {
         $mid = (int)(($left + $right) / 2);
-        $judulMid = strtolower($booksArray[$mid]['BUKU_JUDUL']);
+        $judulMid = $booksArray[$mid]['BUKU_JUDUL'];
 
-        if (str_contains($judulMid, $keyword)) {
+        if (stripos($judulMid, $keyword) !== false) {
             $foundBooks[] = $booksArray[$mid];
 
             // Cari kiri
             $i = $mid - 1;
-            while ($i >= 0 && str_contains(strtolower($booksArray[$i]['BUKU_JUDUL']), $keyword)) {
+            while ($i >= 0 && stripos($booksArray[$i]['BUKU_JUDUL'], $keyword) !== false) {
                 $foundBooks[] = $booksArray[$i];
                 $i--;
             }
 
             // Cari kanan
             $i = $mid + 1;
-            while ($i < count($booksArray) && str_contains(strtolower($booksArray[$i]['BUKU_JUDUL']), $keyword)) {
+            while ($i < count($booksArray) && stripos($booksArray[$i]['BUKU_JUDUL'], $keyword) !== false) {
                 $foundBooks[] = $booksArray[$i];
                 $i++;
             }
 
             break;
-        } elseif ($keyword < $judulMid) {
+        } elseif (strcasecmp($keyword, $judulMid) < 0) {
             $right = $mid - 1;
         } else {
             $left = $mid + 1;
         }
     }
 
-    // Konversi hasil ke koleksi dan relasi
     $bukuList = collect($foundBooks)->map(function ($item) {
         $buku = new \App\Models\Buku($item);
         $buku->exists = true;
@@ -209,6 +218,7 @@ public function show($isbn)
         'bukuList' => $bukuList ?? collect()
     ]);
 }
+
 public function bukuBefore()
 {
     $bukuList = Buku::with('penerbit')->get();
@@ -246,6 +256,12 @@ public function bukuBefore()
 
         return redirect()->route('buku.index')->with('success', 'Data buku berhasil diperbarui!');
     }
+public function edit($isbn)
+{
+    $buku = Buku::with(['penerbit', 'kategoris'])->where('BUKU_ISBN', $isbn)->firstOrFail();
+    $penerbits = Penerbit::all(); // Untuk dropdown penerbit, jika diperlukan
+    return view('buku.edit', compact('buku', 'penerbits'));
+}
 
 public function create()
 {

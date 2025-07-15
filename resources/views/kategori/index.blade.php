@@ -31,24 +31,27 @@
                 <tr class="border-b">
                     <td class="px-4 py-2 text-gray-700">{{ $kategori->KATEGORI_ID }}</td>
                     <td class="px-4 py-2 text-gray-700">{{ $kategori->KATEGORI_NAMA }}</td>
-                    <td class="px-4 py-2">
-                        <div class="flex gap-2">
-                            <a href="{{ route('kategori.edit', $kategori->KATEGORI_ID) }}"
-                                class="bg-black hover:bg-gray-800 text-white px-3 py-2 rounded-md font-bold">
-                                Edit
-                            </a>
+                   <td class="px-4 py-2">
+    <div class="flex gap-2">
+        <a href="{{ route('kategori.edit', $kategori->KATEGORI_ID) }}"
+           class="bg-black hover:bg-gray-800 text-white px-3 py-2 rounded-md font-bold">
+            Edit
+        </a>
 
-                            <form action="{{ route('kategori.destroy', $kategori->KATEGORI_ID) }}" method="POST"
-                                onsubmit="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"
-                                    class="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md font-semibold">
-                                    Hapus
-                                </button>
-                            </form>
-                        </div>
-                    </td>
+        <form id="form-delete-kategori-{{ $kategori->KATEGORI_ID }}" 
+              action="{{ route('kategori.destroy', $kategori->KATEGORI_ID) }}" 
+              method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="button"
+                    onclick="confirmDeleteKategori('{{ $kategori->KATEGORI_ID }}')"
+                    class="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md font-semibold">
+                Hapus
+            </button>
+        </form>
+    </div>
+</td>
+
                 </tr>
             @endforeach
         </tbody>

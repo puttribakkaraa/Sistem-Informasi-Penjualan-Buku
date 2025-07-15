@@ -8,12 +8,19 @@ use Illuminate\Http\Request;
 class PenerbitController extends Controller
 {
     // Menampilkan daftar penerbit
-    public function index()
-    {
-        $penerbits = Penerbit::all();
-        return view('admin.penerbit.index', compact('penerbits'));
+  public function index(Request $request)
+{
+    $query = Penerbit::query();
+
+    // Tambahkan pencarian berdasarkan nama penulis
+    if ($request->has('q') && $request->q !== null) {
+        $query->where('PENERBIT_NAMA', 'like', '%' . $request->q . '%');
     }
 
+    $penerbits = $query->orderBy('PENERBIT_ID')->get();
+
+    return view('admin.penerbit.index', compact('penerbits'));
+}
     // Menampilkan form untuk menambah penerbit
    public function create()
 {
@@ -62,8 +69,8 @@ class PenerbitController extends Controller
     // Jangan update ID-nya!
     $penerbit->PENERBIT_NAMA = $request->PENERBIT_NAMA;
     $penerbit->save();
-
-    return redirect()->route('admin.penerbit.index')->with('success', 'Penerbit berhasil diperbarui');
+    return redirect()->route('admin.penerbit.index')->with('success', 'Penulis berhasil diperbarui');
+   
 }
 
 

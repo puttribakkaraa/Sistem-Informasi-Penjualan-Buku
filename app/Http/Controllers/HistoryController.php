@@ -7,12 +7,22 @@ use Illuminate\Http\Request;
 
 class HistoryController extends Controller
 {
-    public function index()
-    {
-        // Ganti ini sesuai nama variabel yang kamu pakai
-        $pembelianList = \App\Models\Pembelian::all(); // atau yang sesuai
+    public function index(Request $request)
+{
+    $query = \App\Models\Pembelian::query();
 
-        return view('pembelian.historyAdmin', compact('pembelianList'));
+    // Filter pencarian
+    if ($request->has('q') && $request->q !== null) {
+        $search = $request->q;
+        $query->where('NAMA_PEMBELI', 'like', '%' . $search . '%')
+              ->orWhere('BUKU_JUDUL', 'like', '%' . $search . '%');
     }
+
+    // Pagination per halaman
+    $perPage = $request->get('perPage', 10); // default 10
+    $pembelianList = $query->orderBy('created_at', 'desc')->paginate($perPage);
+
+    return view('pembelian.historyAdmin', compact('pembelianList'));
+}
 }
 

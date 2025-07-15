@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\LinkBukuKategori;
 use Illuminate\Http\Request;
-
+use App\Models\Buku;
+  use App\Models\Kategori; // Tambahkan ini di atas jika belum
 class LinkBukuKategoriController extends Controller
 {
     public function index()
@@ -13,10 +14,22 @@ class LinkBukuKategoriController extends Controller
         return view('admin.link_buku_kategori.index', compact('linkBukuKategoris'));
     }
 
-    public function create()
-    {
-        return view('admin.link_buku_kategori.create');
-    }
+
+
+public function create()
+{
+    // Ambil semua kategori
+    $kategoris = Kategori::all();
+
+    // Ambil ISBN buku yang sudah terhubung
+    $isbnTerkait = LinkBukuKategori::pluck('buku_isbn')->toArray();
+
+    // Ambil buku yang ISBN-nya belum pernah dihubungkan
+    $bukus = Buku::whereNotIn('BUKU_ISBN', $isbnTerkait)->get();
+
+    return view('admin.link_buku_kategori.create', compact('kategoris', 'bukus'));
+}
+
 
     public function store(Request $request)
     {

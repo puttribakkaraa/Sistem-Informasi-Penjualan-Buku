@@ -110,11 +110,14 @@ class PembelianController extends Controller
 }
 
 
-    public function historyAdmin()
-    {
-        $pembelianList = Pembelian::orderBy('created_at', 'desc')->get();
-        return view('pembelian.historyAdmin', compact('pembelianList'));
-    }
+   public function historyAdmin()
+{
+    $perPage = request('perPage', 10); // default 10
+    $pembelianList = Pembelian::orderBy('created_at', 'desc')->paginate($perPage);
+
+    return view('pembelian.historyAdmin', compact('pembelianList'));
+}
+
 
     public function history()
     {
@@ -126,26 +129,39 @@ class PembelianController extends Controller
     }
 
     // ✅ Admin ubah status + kirim notifikasi
-    public function updateStatus(Request $request, $id)
-    {
-        $validated = $request->validate([
-            'status_pesanan' => 'required|in:diproses,dikirim,ditolak,selesai',
-        ]);
+   public function updateStatus(Request $request, $id)
+{
+    $validated = $request->validate([
+    'status_pesanan' => 'required|in:diproses,dikirim,ditolak,selesai',
+    'alasan_penolakan' => 'required_if:status_pesanan,ditolak|string|max:255',
+]);
 
-        try {
-            $pembelian = Pembelian::findOrFail($id);
 
-            if ($pembelian->status_pesanan === $validated['status_pesanan']) {
-                return back()->with('info', 'Status pesanan sudah sama.');
-            }
+    try {
+        $pembelian = Pembelian::findOrFail($id);
 
-            $pembelian->status_pesanan = $validated['status_pesanan'];
-            $pembelian->save();
+        if ($pembelian->status_pesanan === $validated['status_pesanan']) {
+            return back()->with('info', 'Status pesanan sudah sama.');
+        }
 
-            // ✅ Kirim notifikasi ke user
-            if ($pembelian->user) {
-                $pembelian->user->notify(new StatusPesananNotification($pembelian, $validated['status_pesanan']));
-            }
+        $pembelian->status_pesanan = $validated['status_pesanan'];
+
+        // ✅ Set alasan penolakan hanya jika statusnya ditolak
+        if ($validated['status_pesanan'] === 'ditolak') {
+            $pembelian->alasan_penolakan = $validated['alasan_penolakan'] ?? '-';
+        } else {
+            $pembelian->alasan_penolakan = null;
+        }
+
+       $pembelian->save();
+
+// 🛠️ Refresh agar alasan_penolakan ikut termuat
+$pembelian->refresh();
+
+if ($pembelian->user) {
+    $pembelian->user->notify(new StatusPesananNotification($pembelian, $validated['status_pesanan']));
+}
+
 
             return redirect()->route('pembelian.historyAdmin')->with('success', 'Status berhasil diperbarui.');
         } catch (\Exception $e) {

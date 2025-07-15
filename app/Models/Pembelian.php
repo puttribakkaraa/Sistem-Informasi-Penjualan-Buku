@@ -23,6 +23,7 @@ class Pembelian extends Model
         'NAMA_PEMBELI',
         'ALAMAT',
         'status_pesanan',
+        'alasan_penolakan',
     ];
 
     // Relasi ke tabel users

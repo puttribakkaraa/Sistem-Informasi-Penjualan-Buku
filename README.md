@@ -39,6 +39,8 @@ Sistem ini dibangun menggunakan Laravel 11 untuk mengelola proses penjualan buku
 <img src="./images/admin login.png" width="560" height="415" />
 <img src="./images/admin welcome.png" width="560" height="415" />
 <img src="./images/admin dashboard.png" width="560" height="415" />
+
+
 <img src="./images/16 tambah kategori.png" width="560" height="415" />
 <img src="./images/19 menambahkan penerbit.png" width="560" height="415" />
 <img src="./images/20 menambahkan pengarang.png" width="560" height="415" />

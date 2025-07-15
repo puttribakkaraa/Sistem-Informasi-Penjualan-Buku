@@ -6,9 +6,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
-<body class="bg-gray-300 font-sans antialiased">
+<body class="font-sans antialiased" style="background-color: #B2C6D5;">
+
 
     <!-- Sidebar -->
     @include('layouts.navbaradmin')
@@ -17,7 +20,7 @@
     <div class="ml-64 transition-all duration-300" id="mainContent">
         <!-- Header -->
         <div class="flex justify-between items-center p-4 bg-white shadow">
-            <button onclick="toggleSidebar()" class="text-2xl bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800">☰</button>
+            <button onclick="toggleSidebar()" class="text-2xl bg-blue-200 text-white px-4 py-2 rounded hover:bg-blue-800">☰</button>
 
            <!-- Dropdown user -->
 <div class="relative inline-block text-left">
@@ -81,7 +84,98 @@
                 dropdown.classList.add('hidden');
             }
         });
+        
     </script>
+<script>
+        function confirmDelete(isbn, kategoriId) {
+            Swal.fire({
+                title: 'Yakin ingin menghapus?',
+                text: "Data yang dihapus tidak bisa dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#e3342f',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(`form-delete-${isbn}-${kategoriId}`).submit();
+                }
+            });
+        }
+    </script>
+    <script>
+    function confirmDelete(isbn) {
+        Swal.fire({
+            title: 'Yakin ingin menghapus buku ini?',
+            text: "Tindakan ini tidak bisa dibatalkan.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e3342f',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(`form-delete-${isbn}`).submit();
+            }
+        });
+    }
+</script>
+<script>
+    function confirmDeleteKategori(kategoriId) {
+        Swal.fire({
+            title: 'Yakin ingin menghapus kategori ini?',
+            text: "Tindakan ini tidak bisa dibatalkan.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e3342f',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(`form-delete-kategori-${kategoriId}`).submit();
+            }
+        });
+    }
+</script>
+<script>
+    function confirmDeletePenerbit(penerbitId) {
+        Swal.fire({
+            title: 'Yakin ingin menghapus penulis ini?',
+            text: "Data yang dihapus tidak bisa dikembalikan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e3342f',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(`form-delete-penerbit-${penerbitId}`).submit();
+            }
+        });
+    }
+</script>
+<script>
+    function confirmDeletePengarang(pengarangId) {
+        Swal.fire({
+            title: 'Yakin ingin menghapus pengarang ini?',
+            text: "Data yang dihapus tidak bisa dikembalikan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e3342f',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(`form-delete-pengarang-${pengarangId}`).submit();
+            }
+        });
+    }
+</script>
 
 </body>
 </html>

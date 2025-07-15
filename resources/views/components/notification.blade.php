@@ -3,6 +3,13 @@
 @php
     $status = $notification->data['status'] ?? 'diproses';
     $pesanan = $notification->data['pesanan'] ?? null;
+    $alasan = null;
+
+    if ($status === 'ditolak' && isset($notification->data['pesan'])) {
+        // Cari dan ambil alasan dari pesan, jika ada
+        preg_match('/Alasan penolakan: (.+)$/', $notification->data['pesan'], $matches);
+        $alasan = $matches[1] ?? null;
+    }
 
     $warna = match($status) {
         'diproses' => 'bg-yellow-100 border-yellow-400 text-yellow-800',
@@ -38,6 +45,15 @@
                 Pesanan atas nama <strong>{{ $pesanan['nama_pembeli'] ?? 'Tidak diketahui' }}</strong> 
                 untuk buku <strong>{{ $pesanan['buku_judul'] ?? '—' }}</strong>.
             </p>
+
+            @if($alasan)
+               <p class="text-sm text-red-800 mt-1">
+    <strong>Alasan Penolakan:</strong> 
+    {{ $alasan !== '-' ? $alasan : 'Tidak ada alasan yang ditulis oleh admin.' }}
+</p>
+
+            @endif
+
             <p class="text-xs text-gray-600 mt-1">{{ $notification->created_at->diffForHumans() }}</p>
         </div>
         <button @click="show = false" class="text-xl font-bold hover:text-red-600 transition">&times;</button>

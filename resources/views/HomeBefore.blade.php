@@ -4,7 +4,7 @@
     <!-- Header -->
     <div class="bg-gradient-to-r from-blue-500 to-teal-500 text-white p-6 rounded-lg shadow-lg text-center mb-6">
         <h1 class="text-3xl font-semibold">
-           Selamat Datang! <span class="font-extrabold">Kamu</span>, 
+           Selamat Datang! <span class="font-extrabold">Pengunjung</span>, 
         </h1>
         <p class="mt-2 text-lg">Selamat datang di Media Cendekia Muslim!!</p>
     </div>

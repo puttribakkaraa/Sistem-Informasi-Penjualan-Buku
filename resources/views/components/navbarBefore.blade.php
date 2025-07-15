@@ -10,6 +10,9 @@
               <!-- Current: "bg-purple-700 text-white", Default: "text-gray-300 hover:bg-purple-500 hover:text-white" -->
               <x-Nav-Link href="/ " :active="request()->is('/')">Dashboard</x-Nav-Link>
               <x-Nav-Link href="/BukuBefore" :active="request()->is('BukuBefore')">Buku</x-Nav-Link>
+                <x-Nav-Link href="/kirimnaskahbefore" :active="request()->is('kirimnaskahbefore')">Kirim Naskah</x-Nav-Link>
+          
+
               <!-- <x-Nav-Link href="/pembelian/history" :active="request()->is('pembelian/history')">Riwayat Pembelian</x-Nav-Link> -->
              
             </div>

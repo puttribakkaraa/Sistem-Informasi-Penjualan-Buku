@@ -8,11 +8,19 @@ use Illuminate\Http\Request;
 class PengarangController extends Controller
 {
     // Menampilkan daftar pengarang
-    public function index()
-    {
-        $pengarangs = Pengarang::all();
-        return view('pengarang.index', compact('pengarangs'));
+  public function index(Request $request)
+{
+    $query = Pengarang::query();
+
+    // Filter jika ada pencarian nama
+    if ($request->has('q') && $request->q !== null) {
+        $query->where('PENGARANG_NAMA', 'like', '%' . $request->q . '%');
     }
+
+    $pengarangs = $query->orderBy('PENGARANG_ID')->get();
+
+    return view('pengarang.index', compact('pengarangs'));
+}
 
     // Menampilkan form untuk menambah pengarang
     public function create()

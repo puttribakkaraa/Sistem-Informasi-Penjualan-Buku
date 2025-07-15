@@ -4,7 +4,6 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Messages\DatabaseMessage;
 
 class StatusPesananNotification extends Notification
 {
@@ -24,20 +23,32 @@ class StatusPesananNotification extends Notification
         return ['database'];
     }
 
-   
-public function toDatabase($notifiable)
-{
-    return [
-        'judul' => 'Status Pesanan Diperbarui',
-        'pesan' => 'Pesanan #' . $this->pesanan->id . ' sekarang berstatus: ' . $this->status,
-        'url' => url('/riwayat-pembelian/' . $this->pesanan->id),
-        'waktu' => now()->format('d-m-Y H:i'),
-        'status' => $this->status,
-        'pesanan' => [
-            'nama_pembeli' => $this->pesanan->NAMA_PEMBELI ?? 'Tidak diketahui',
-            'buku_judul' => $this->pesanan->BUKU_JUDUL ?? '—',
-        ],
-    ];
-}
+    public function toDatabase($notifiable)
+    {
+        return [
+            'judul' => 'Status Pesanan Diperbarui',
+            'pesan' => $this->generatePesan(),
+            'url' => url('/riwayat-pembelian/' . $this->pesanan->id),
+            'waktu' => now()->format('d-m-Y H:i'),
+            'status' => $this->status,
+            'pesanan' => [
+                'nama_pembeli' => $this->pesanan->NAMA_PEMBELI ?? 'Tidak diketahui',
+                'buku_judul' => $this->pesanan->BUKU_JUDUL ?? '—',
+            ],
+        ];
+    }
 
+    protected function generatePesan()
+    {
+        $base = 'Pesanan atas nama ' . ($this->pesanan->NAMA_PEMBELI ?? '-') .
+                ' untuk buku ' . ($this->pesanan->BUKU_JUDUL ?? '-') .
+                ' sekarang berstatus: ' . ucfirst($this->status) . '.';
+
+        if ($this->status === 'ditolak') {
+            $alasan = $this->pesanan->alasan_penolakan ?? 'Tanpa alasan';
+            $base .= ' Alasan penolakan: ' . $alasan;
+        }
+
+        return $base;
+    }
 }

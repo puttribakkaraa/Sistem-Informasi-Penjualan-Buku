@@ -28,9 +28,27 @@ use App\Http\Controllers\BukuBeforeController;
 use App\Http\Controllers\AkademiController;
 use App\Http\Controllers\HomeBeforeController;
 use App\Http\Controllers\UlasanController;
+use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\KirimNaskahBeforeController;
+
+Route::get('/kirimnaskahbefore', [KirimNaskahBeforeController::class, 'index']);
+
+
+Route::get('/pendaftaran', [PendaftaranController::class, 'index']);
+
+
+
+
+
+Route::get('/pendaftaran/{kelas}', [PendaftaranController::class, 'showForm'])->name('pendaftaran.form');
+Route::post('/pendaftaran', [PendaftaranController::class, 'submit'])->name('pendaftaran.submit');
+Route::get('/admin/pendaftarans', [PendaftaranController::class, 'riwayat'])->name('admin.pendaftarans');
+
+
 Route::resource('buku', BukuController::class);
 
 Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
+Route::get('/owner/detail-penjualan', [LaporanPenjualanController::class, 'detailPenjualan'])->name('owner.detail_penjualan');
 
 Route::get('/home-before', [HomeBeforeController::class, 'index'])->name('home.before');
 Route::get('/buku/{isbn}', [\App\Http\Controllers\BukuController::class, 'show'])->name('buku.detail');
@@ -51,6 +69,7 @@ Route::get('/BukuBefore', [BukuController::class, 'bukuBefore'])->name('buku.bef
 Route::get('/SearchBefore', [BukuBeforeController::class, 'searchBefore'])->name('SearchBefore');
 
 
+Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
 
 
 

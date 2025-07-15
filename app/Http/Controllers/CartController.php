@@ -20,6 +20,21 @@ class CartController extends Controller
         $cart = Session::get('cart', []);
         return view('pembelian.cart', compact('cart'));
     }
+    public function update(Request $request)
+{
+    $isbn = $request->isbn;
+    $jumlah = max(1, (int) $request->jumlah); // Pastikan jumlah minimal 1
+
+    $cart = session()->get('cart', []);
+
+    if (isset($cart[$isbn])) {
+        $cart[$isbn]['jumlah'] = $jumlah;
+        session()->put('cart', $cart);
+    }
+
+    return back()->with('success', 'Jumlah berhasil diperbarui.');
+}
+
 
     public function add(Request $request)
     {

@@ -6,7 +6,7 @@
  
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans antialiased">
+<body class="bg-gray-800 font-sans antialiased">
   <div class="flex min-h-screen">
 
     <!-- Sidebar -->

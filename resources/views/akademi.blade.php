@@ -1,3 +1,7 @@
+
+@php
+    use Illuminate\Support\Str;
+@endphp
 <x-layout :title="'Akademi MCM'">
 
     <!-- Seksi Pengantar -->
@@ -65,22 +69,17 @@
 
 
     <!-- Pilihan Kelas -->
-<div class="bg-sky-100 py-12">
-    <div class="max-w-6xl mx-auto text-center px-4">
-        <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-6">Pilihan Kelas</h2>
-        <div class="flex flex-wrap justify-center gap-3">
-            @foreach ([
-                'Menulis', 'Public Speaking', 'Dongeng', 'Ilustrasi',
-                'Komik', 'Entrepreneurship', 'Penerbitan', 'Jurnalistik'
-            ] as $kelas)
-                <a href="https://forms.gle/Jk52pUJEgRSHF2SC7" target="_blank"
-                   class="bg-blue-500 hover:bg-blue-600 text-white font-medium px-4 py-2 rounded-md transition duration-200 shadow-md">
-                    {{ $kelas }}
-                </a>
-            @endforeach
-        </div>
-    </div>
-</div>
+@foreach ([
+    'Menulis', 'Public Speaking', 'Dongeng', 'Ilustrasi',
+    'Komik', 'Entrepreneurship', 'Penerbitan', 'Jurnalistik'
+] as $kelas)
+    <a href="{{ route('pendaftaran.form', ['kelas' => Str::slug($kelas, '-')]) }}"
+
+       class="bg-blue-500 hover:bg-blue-600 text-white font-medium px-4 py-2 rounded-md transition duration-200 shadow-md">
+        {{ $kelas }}
+    </a>
+@endforeach
+
 
 
     <!-- Mentor Akademi -->
