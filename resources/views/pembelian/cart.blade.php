@@ -59,7 +59,8 @@
 
         <!-- Form Checkout -->
         <div class="bg-white p-6 mt-8 rounded-lg shadow">
-           <form action="{{ route('cart.checkout') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+           <form action="{{ route('pembelian.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+
     @csrf
 
     @foreach($cart as $isbn => $item)

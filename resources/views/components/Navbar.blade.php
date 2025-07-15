@@ -24,14 +24,14 @@
             
             <!-- Notifikasi -->
             <a href="/notifikasi" class="relative hover:scale-105 transition-transform">
-                <img src="/images/notif.png" alt="Notifikasi" class="h-6 w-6">
+                <img src="/images/bel.png" alt="Notifikasi" class="h-6 w-6">
                 <!-- Indikator notifikasi -->
                 <span class="absolute top-0 right-0 inline-block w-2 h-2 bg-red-500 rounded-full"></span>
             </a>
 
             <!-- Keranjang -->
             <a href="/cart" class="relative hover:scale-105 transition-transform">
-                <img src="/images/cart.png" alt="Keranjang" class="h-6 w-6">
+                <img src="/images/iya.png" alt="Keranjang" class="h-4 w-4">
                 <!-- Indikator jumlah item keranjang, opsional -->
                 {{-- <span class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full px-1">3</span> --}}
             </a>

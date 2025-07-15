@@ -28,7 +28,7 @@ use App\Http\Controllers\BukuBeforeController;
 use App\Http\Controllers\AkademiController;
 use App\Http\Controllers\HomeBeforeController;
 use App\Http\Controllers\UlasanController;
-
+Route::resource('buku', BukuController::class);
 
 Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 

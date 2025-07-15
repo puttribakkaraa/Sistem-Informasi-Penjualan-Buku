@@ -57,51 +57,58 @@ class PembelianController extends Controller
     }
 
     public function checkout(Request $request)
-    {
-        $request->validate([
-            'nama_pembeli' => 'required|string|max:255',
-            'alamat' => 'required|string',
-            'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
+{
+    $request->validate([
+        'nama_pembeli' => 'required|string|max:255',
+        'alamat' => 'required|string',
+        'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+    ]);
 
-        $cart = session()->get('cart', []);
+    $cart = session()->get('cart', []);
 
-        if (!$cart || count($cart) == 0) {
-            return redirect()->route('dashboard2')->with('error', 'Keranjang belanja kosong.');
-        }
-
-        $buktiPath = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
-
-        foreach ($cart as $isbn => $item) {
-            $buku = Buku::where('BUKU_ISBN', $isbn)->first();
-            if (!$buku) continue;
-
-            if ($buku->stok < $item['jumlah']) {
-                return redirect()->route('cart.show')->with('error', "Stok untuk {$item['judul']} tidak mencukupi.");
-            }
-
-            $buku->stok -= $item['jumlah'];
-            $buku->save();
-
-            Pembelian::create([
-                'ID_PENGGUNA' => auth()->id(),
-                'NAMA_USER' => auth()->user()->name ?? 'Guest',
-                'BUKU_JUDUL' => $item['judul'],
-                'JUMLAH_ITEM' => $item['jumlah'],
-                'BUKU_HARGA' => $item['harga'],
-                'TOTAL_HARGA' => $item['harga'] * $item['jumlah'],
-                'BUKU_ISBN' => $isbn,
-                'BUKTI_PEMBAYARAN' => $buktiPath,
-                'NAMA_PEMBELI' => $request->nama_pembeli,
-                'ALAMAT' => $request->alamat,
-                'status_pesanan' => 'diproses',
-            ]);
-        }
-
-        session()->forget('cart');
-
-        return redirect()->route('dashboard2')->with('success', 'Checkout berhasil! Pesanan sedang diproses.');
+    if (empty($cart)) {
+        return redirect()->route('dashboard2')->with('error', 'Keranjang belanja kosong.');
     }
+
+    $buktiPath = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
+
+    foreach ($cart as $isbn => $item) {
+        $buku = Buku::where('BUKU_ISBN', $isbn)->first();
+
+        if (!$buku) {
+            \Log::error("Buku dengan ISBN $isbn tidak ditemukan.");
+            continue;
+        }
+
+        if ($buku->stok < $item['jumlah']) {
+            return redirect()->route('cart.show')->with('error', "Stok untuk buku '{$item['judul']}' tidak mencukupi.");
+        }
+
+        // Kurangi stok
+        $buku->stok -= $item['jumlah'];
+        $buku->save();
+
+        // Simpan data pembelian
+        Pembelian::create([
+            'ID_PENGGUNA' => auth()->id(),
+            'NAMA_USER' => auth()->user()->name ?? 'Guest',
+            'BUKU_JUDUL' => $item['judul'],
+            'JUMLAH_ITEM' => $item['jumlah'],
+            'BUKU_HARGA' => $item['harga'],
+            'TOTAL_HARGA' => $item['harga'] * $item['jumlah'],
+            'BUKU_ISBN' => $isbn,
+            'BUKTI_PEMBAYARAN' => $buktiPath,
+            'NAMA_PEMBELI' => $request->nama_pembeli,
+            'ALAMAT' => $request->alamat,
+            'status_pesanan' => 'diproses',
+        ]);
+    }
+
+    session()->forget('cart');
+
+    return redirect()->route('dashboard2')->with('success', 'Checkout berhasil! Pesanan sedang diproses.');
+}
+
 
     public function historyAdmin()
     {

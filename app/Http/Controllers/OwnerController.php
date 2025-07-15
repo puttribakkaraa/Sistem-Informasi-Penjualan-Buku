@@ -30,10 +30,12 @@ public function logout(Request $request)
     return redirect('/login');
 }
 
-public function stokBuku()
+public function stokBuku(Request $request)
 {
-    $bukus = Buku::all(); // atau bisa tambahkan paginate(10)
-    return view('owner.stok_buku', compact('bukus'));
+    $perPage = $request->get('perPage', 10); // Default 20, bisa pilih 10/50
+    $bukus = Buku::paginate($perPage);
+
+    return view('owner.stok_buku', compact('bukus', 'perPage'));
 }
 
 public function exportExcel(Request $request)
