@@ -1,4 +1,4 @@
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/ca4fc205-be59-4995-bfd3-30edaf995b97" /># 📚 Sistem Informasi Penjualan Buku - CV Media Cendekia
+# 📚 Sistem Informasi Penjualan Buku - CV Media Cendekia
 
 Sistem ini dibangun menggunakan Laravel 11 untuk mengelola proses penjualan buku secara online dengan peran multi-level user: **Pengguna (Pelanggan)**, **Admin**, dan **Owner**. Sistem ini mendukung pencarian buku menggunakan **algoritma Binary Search**, serta pengelolaan data buku, transaksi, laporan penjualan, dan notifikasi.
 
@@ -15,14 +15,14 @@ Sistem ini dibangun menggunakan Laravel 11 untuk mengelola proses penjualan buku
 - Notifikasi status pesanan
 
 #### Tampilan Halaman Pelanggan
-<img src="./Image Pustaka Bit/1 before.png" width="560" height="420" />
-<img src="./Image Pustaka Bit/3 regist.png" width="560" height="420" />
-<img src="./Image Pustaka Bit/login2.png" width="560" height="420" />
-<img src="./Image Pustaka Bit/5 dashboard.png" width="560" height="420" />
-<img src="./Image Pustaka Bit/6 buku.png" width="560" height="420" />
-<img src="./Image Pustaka Bit/7 cari harga.png" width="560" height="420" />
-<img src="./Image Pustaka Bit/8 cari kategori.png" width="560" height="420" />
-<img src="./Image Pustaka Bit/riwayatPembelian.png" width="560" height="415" />
+<img src="./images/gambar_web_buku_1.jpg" width="560" height="420" />
+<img src="./images/gambar_web_buku_2.jpg" width="560" height="420" />
+<img src="./images/gambar_web_buku_3.jpg" width="560" height="420" />
+<img src="./images/gambar_web_buku_4.jpg" width="560" height="420" />
+<img src="./images/gambar_web_buku_5.jpg" width="560" height="420" />
+<img src="./images/7 cari harga.png" width="560" height="420" />
+<img src="./images/8 cari kategori.png" width="560" height="420" />
+<img src="./images/riwayatPembelian.png" width="560" height="415" />
 
 ---
 
@@ -46,7 +46,7 @@ Sistem ini dibangun menggunakan Laravel 11 untuk mengelola proses penjualan buku
 
 ---
 
-### 🧑‍💼 Owner
+### 👑 Owner
 - Melihat stok buku
 - Melihat data buku terlaris
 - Melihat detail penjualan
