@@ -15,14 +15,15 @@ Sistem ini dibangun menggunakan Laravel 11 untuk mengelola proses penjualan buku
 - Notifikasi status pesanan
 
 #### Tampilan Halaman Pelanggan
-<img src="./images/gambar_web_buku_1.jpg" width="560" height="420" />
-<img src="./images/gambar_web_buku_2.jpg" width="560" height="420" />
-<img src="./images/gambar_web_buku_3.jpg" width="560" height="420" />
-<img src="./images/gambar_web_buku_4.jpg" width="560" height="420" />
-<img src="./images/gambar_web_buku_5.jpg" width="560" height="420" />
-<img src="./images/7 cari harga.png" width="560" height="420" />
-<img src="./images/8 cari kategori.png" width="560" height="420" />
-<img src="./images/riwayatPembelian.png" width="560" height="415" />
+<img src="./images/dashboardpengguna.jpg" width="560" height="420" />
+<img src="./images/katalogbuku.jpg" width="560" height="420" />
+<img src="./images/kirimnaskah.jpg" width="560" height="420" />
+<img src="./images/akademi.jpg" width="560" height="420" />
+<img src="./images/riwayat.jpg" width="560" height="420" />
+<img src="./images/keranjang.jpg" width="560" height="420" />
+<img src="./images/notifikasi.jpg" width="560" height="420" />
+<img src="./images/pembayaran.jpg" width="560" height="415" />
+<img src="./images/notifikasipesanan.jpg" width="560" height="415" />
 
 ---
 
