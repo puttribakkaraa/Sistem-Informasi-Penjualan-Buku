@@ -36,9 +36,9 @@ Sistem ini dibangun menggunakan Laravel 11 untuk mengelola proses penjualan buku
 - Melihat riwayat pembelian
 
 #### Tampilan Halaman Admin
-<img src="./images/13 admin login.png" width="560" height="415" />
-<img src="./images/14 admin welcome.png" width="560" height="415" />
-<img src="./images/15 admin dashboard.png" width="560" height="415" />
+<img src="./images/admin login.png" width="560" height="415" />
+<img src="./images/admin welcome.png" width="560" height="415" />
+<img src="./images/admin dashboard.png" width="560" height="415" />
 <img src="./images/16 tambah kategori.png" width="560" height="415" />
 <img src="./images/19 menambahkan penerbit.png" width="560" height="415" />
 <img src="./images/20 menambahkan pengarang.png" width="560" height="415" />
