@@ -1,56 +1,80 @@
-# Media Cendekia Muslim ( Toko Buku Online )
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/ca4fc205-be59-4995-bfd3-30edaf995b97" /># 📚 Sistem Informasi Penjualan Buku - CV Media Cendekia
 
-Proyek ini adalah aplikasi toko buku IT online yang dibangun menggunakan **Laravel 11** dan **Tailwind CSS**. Aplikasi ini memungkinkan pengguna untuk menjelajahi berbagai kategori buku, melakukan checkout, dan melakukan pembelian secara online.
+Sistem ini dibangun menggunakan Laravel 11 untuk mengelola proses penjualan buku secara online dengan peran multi-level user: **Pengguna (Pelanggan)**, **Admin**, dan **Owner**. Sistem ini mendukung pencarian buku menggunakan **algoritma Binary Search**, serta pengelolaan data buku, transaksi, laporan penjualan, dan notifikasi.
 
-## Fitur
+---
 
-- **Autentikasi Pengguna:** Pengguna dapat mendaftar, masuk, dan mengelola akun mereka.
-- **Manajemen Buku:** Admin dapat menambahkan, mengedit, dan menghapus buku yang tersedia di toko.
-- **Kategori Buku:** Buku dibagi dalam berbagai kategori yang memudahkan pengguna untuk mencari (Menggunakan algoritma hashmap).
-- **Pencarian Berdasarkan Harga:** Pengguna dapat mencari buku dengan rentang harga tertentu (Menggunakan algoritma quicksort).
-- **Pembayaran:** Fitur pembayaran untuk memproses pesanan menggunakan sistem pembayaran yang tersedia.
-- **Responsive Design:** Tampilan aplikasi yang responsif dan mobile-friendly, dibangun dengan Tailwind CSS.
-- **Riwayat Pembelian:** Tampilan riwayat pembelian pelanggan dengan status pesanan.
-- **Halaman Admin:** Tampilan admin untuk mengelola buku, pesanan, dan pelanggan.
+## 🔑 Fitur Utama Berdasarkan Role
 
-## Teknologi yang Digunakan
+### 👤 Pengguna / Pelanggan
+- Registrasi dan Login
+- Melihat katalog buku
+- Pencarian buku berdasarkan kategori dan harga (binary search)
+- Menambahkan buku ke keranjang
+- Checkout dan melihat riwayat pembelian
+- Notifikasi status pesanan
 
-- **Laravel 11:** Framework PHP yang digunakan untuk membangun aplikasi.
-- **Tailwind CSS:** Framework CSS yang digunakan untuk mendesain antarmuka aplikasi.
-- **MySQL:** Database untuk menyimpan data buku dan pengguna.
-- **Composer:** Dependency manager untuk PHP yang digunakan untuk mengelola paket-paket Laravel.
-- **Node Js:** Runtime environment yang memungkinkan untuk menjalankan JavaScript di luar browser.
+#### Tampilan Halaman Pelanggan
+<img src="./Image Pustaka Bit/1 before.png" width="560" height="420" />
+<img src="./Image Pustaka Bit/3 regist.png" width="560" height="420" />
+<img src="./Image Pustaka Bit/login2.png" width="560" height="420" />
+<img src="./Image Pustaka Bit/5 dashboard.png" width="560" height="420" />
+<img src="./Image Pustaka Bit/6 buku.png" width="560" height="420" />
+<img src="./Image Pustaka Bit/7 cari harga.png" width="560" height="420" />
+<img src="./Image Pustaka Bit/8 cari kategori.png" width="560" height="420" />
+<img src="./Image Pustaka Bit/riwayatPembelian.png" width="560" height="415" />
 
+---
 
-## Halaman Untuk Pelanggan
-<img src="./Image%20Pustaka%20Bit/1%20before.png"  width="560" height="420" />
-<img src="./Image%20Pustaka%20Bit/3%20regist.png"  width="560" height="420" />
-<img src="./Image%20Pustaka%20Bit/login2.png"  width="560" height="420" />
-<img src="./Image%20Pustaka%20Bit/5%20dashboard.png"  width="560" height="420" />
-<img src="./Image%20Pustaka%20Bit/6%20buku.png"  width="560" height="420" />
-<img src="./Image%20Pustaka%20Bit/7%20cari%20harga.png"  width="560" height="420" />
-<img src="./Image%20Pustaka%20Bit/8%20cari%20kategori.png"  width="560" height="420" />
-<img src="./Image%20Pustaka%20Bit/riwayatPembelian.png"  width="560" height="415" />
+### 🧑‍💼 Admin
+- Login Admin
+- Dashboard informasi toko (total buku, kategori, penulis, pengarang, pengguna, dan penjualan)
+- Manajemen data buku
+- Manajemen kategori
+- Manajemen penulis dan pengarang
+- Melihat riwayat pembelian
 
+#### Tampilan Halaman Admin
+<img src="./images/13 admin login.png" width="560" height="415" />
+<img src="./images/14 admin welcome.png" width="560" height="415" />
+<img src="./images/15 admin dashboard.png" width="560" height="415" />
+<img src="./images/16 tambah kategori.png" width="560" height="415" />
+<img src="./images/19 menambahkan penerbit.png" width="560" height="415" />
+<img src="./images/20 menambahkan pengarang.png" width="560" height="415" />
+<img src="./images/21 menambahkan buku.png" width="560" height="415" />
+<img src="./images/23 pesanan dan status.png" width="560" height="415" />
 
-## Halaman Untuk Admin
-<img src="./Image%20Pustaka%20Bit/13%20admin%20login.png"  width="560" height="415" />
-<img src="./Image%20Pustaka%20Bit/14%20admin%20welcome.png"  width="560" height="415" />
-<img src="./Image%20Pustaka%20Bit/15%20admin%20dashboard.png"  width="560" height="415" />
-<img src="./Image%20Pustaka%20Bit/16%20tambah%20kategori.png"  width="560" height="415" />
-<img src="./Image%20Pustaka%20Bit/19%20menambahkan%20penerbit.png"  width="560" height="415" />
-<img src="./Image%20Pustaka%20Bit/20%20menambahkan%20pengarang.png"  width="560" height="415" />
-<img src="./Image%20Pustaka%20Bit/21%20menambahkan%20buku.png"  width="560" height="415" />
-<img src="./Image%20Pustaka%20Bit/23%20pesanan%20dan%20status.png"  width="560" height="415" />
+---
 
+### 🧑‍💼 Owner
+- Melihat stok buku
+- Melihat data buku terlaris
+- Melihat detail penjualan
+- Mengekspor laporan penjualan ke PDF/Excel
 
-## Responsive design
-<img src="./Image%20Pustaka%20Bit/responsif2.png"  />
+#### Tampilan Halaman Owner
+<img src="./images/owner_dashboard.jpg" width="560" height="420" />
 
+---
 
+## 🛠️ Teknologi yang Digunakan
+- Laravel 11
+- PHP 8.x
+- MySQL
+- Tailwind CSS
+- Blade Template Engine
+- Git dan GitHub
 
+---
 
+## ⚙️ Instalasi dan Jalankan Project
 
-
-
-
+```bash
+git clone https://github.com/puttribakkaraa/Sistem-Informasi-Penjualan-Buku.git
+cd Sistem-Informasi-Penjualan-Buku
+composer install
+cp .env.example .env
+php artisan key:generate
+# Atur konfigurasi DB di file .env
+php artisan migrate --seed
+php artisan serve
