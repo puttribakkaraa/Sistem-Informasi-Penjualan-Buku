@@ -21,7 +21,7 @@ Sistem ini dibangun menggunakan Laravel 11 untuk mengelola proses penjualan buku
 <img src="./images/akademi.jpg" width="560" height="420" />
 <img src="./images/riwayat.jpg" width="560" height="420" />
 <img src="./images/keranjang.jpg" width="560" height="420" />
-<img src="./images/notifikasi.jpg" width="560" height="420" />
+<img src="./images/notifikasipesanan.jpg" width="560" height="420" />
 <img src="./images/pembayaran.jpg" width="560" height="415" />
 <img src="./images/notifikasipesanan.jpg" width="560" height="415" />
 
@@ -36,16 +36,14 @@ Sistem ini dibangun menggunakan Laravel 11 untuk mengelola proses penjualan buku
 - Melihat riwayat pembelian
 
 #### Tampilan Halaman Admin
-<img src="./images/admin login.png" width="560" height="415" />
-<img src="./images/admin welcome.png" width="560" height="415" />
-<img src="./images/admin dashboard.png" width="560" height="415" />
-
-
-<img src="./images/16 tambah kategori.png" width="560" height="415" />
-<img src="./images/19 menambahkan penerbit.png" width="560" height="415" />
-<img src="./images/20 menambahkan pengarang.png" width="560" height="415" />
-<img src="./images/21 menambahkan buku.png" width="560" height="415" />
-<img src="./images/23 pesanan dan status.png" width="560" height="415" />
+<img src="./images/loginadmin.jpg" width="560" height="415" />
+<img src="./images/register.jpg" width="560" height="415" />
+<img src="./images/dashboardadmin.jpg" width="560" height="415" />
+<img src="./images/daftarbuku.jpg" width="560" height="415" />
+<img src="./images/kategori.jpg" width="560" height="415" />
+<img src="./images/penulis.jpg" width="560" height="415" />
+<img src="./images/pengarang.jpg" width="560" height="415" />
+<img src="./images/riwayatbeli.jpg" width="560" height="415" />
 
 ---
 
